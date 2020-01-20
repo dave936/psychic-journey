@@ -4,6 +4,14 @@ from Modules.button import *
 from Modules.functions import profileMenu
 from Modules.function import songMenu
 
+conn = sqlite3.connect("gameData.db")
+c = conn.cursor()
+c.execute("INSERT INTO profiles VALUES (1, 'example2',  0, 12345)")
+profileFetch = c.execute("SELECT * from profiles")
+profileNames = []
+for c in profileFetch:
+    profileNames.append(c[1])
+
 profile1 = {
 "ProfileName": "Example",
 "SongsPlayed": 750,
