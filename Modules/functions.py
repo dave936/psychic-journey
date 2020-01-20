@@ -32,12 +32,14 @@ def profileMenu(profile1, profile2):
     profile1_button = button(0, 10, 500, 200, profileString1)
     profile2_button = button(0, 250, 500, 200, profile2["ProfileName"]) #Test to see space on screen
     back_button = button(0, 550, 175, 50, "<< Back")
-
+    create_button = button(500, 550, 275, 50, "New Profile")
+    
     profile1_button.draw()
     profile1_button.addText(profileStringList1)
 
     profile2_button.draw()
     back_button.draw()
+    create_button.draw()
     while True:
         #Getting events and updating screen.
         for event in pygame.event.get():
@@ -53,6 +55,9 @@ def profileMenu(profile1, profile2):
             if back_button.ButtonClicked == True:
                 DISPLAY.fill(CYAN)
                 return False
+            create_button.update(event)
+            if create_button.ButtonClicked == True:
+                print("Yes")
             profile2_button.update(event)
             pygame.display.flip()
 def songMenu():
