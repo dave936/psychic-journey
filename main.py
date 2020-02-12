@@ -4,25 +4,25 @@ from Modules.button import *
 from Modules.functions import profileMenu
 from Modules.function import songMenu
 
-conn = sqlite3.connect("gameData.db")
-c = conn.cursor()
-c.execute("INSERT INTO profiles VALUES (1, 'example2',  0, 12345)")
-profileFetch = c.execute("SELECT * from profiles")
-profileNames = []
-for c in profileFetch:
-    profileNames.append(c[1])
+
+profiles = []
+fetch = cursor.execute("SELECT * from profiles")
+for profile in fetch:
+    profiles.append(profile)
+
+print(profiles)
 
 profile1 = {
-"ProfileName": "Example",
-"SongsPlayed": 750,
-"TimePlayed": "07:05:51",
- "Level": 10
+"ProfileName": str(profiles[0][1]),
+"SongsPlayed": str(profiles[0][2]),
+"TimePlayed": str(profiles[0][3]),
+ "Level": str(profiles[0][4])
 }
 profile2 = {
-"ProfileName": "Example2",
-"SongsPlayed": 215,
-"TimePlayed": "12:05:51",
-"Level": 14
+"ProfileName": str(profiles[1][1]),
+"SongsPlayed": str(profiles[1][2]),
+"TimePlayed": str(profiles[1][3]),
+"Level": str(profiles[1][4])
 }
 
 if __name__ == "__main__":
