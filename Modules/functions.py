@@ -60,14 +60,15 @@ def profileMenu(profile1, profile2):
             #Updates each button. Branches again here.
             profile1_button.update(event)
             if profile1_button.ButtonClicked == True:
-                print("Works!")
-                songMenu()
+                songMenu(profile1)
             back_button.update(event)
             if back_button.ButtonClicked == True:
                 DISPLAY.fill(CYAN)
                 print("Returning...")
                 return False
             profile2_button.update(event)
+            if profile2_button.ButtonClicked == True:
+                songMenu(profile2)
             create_button.update(event)
             if create_button.ButtonClicked == True:
                 new_user = textbox()
@@ -128,7 +129,7 @@ def profileMenu(profile1, profile2):
                         "Level: " + str(profile2["Level"]),
                         ]
 
-                        DISPLAY.fill(CYAN)
+                        DISPLAY.fill(CYAN) #Fill the screen then fill the rectangles to recreate them.
 
                         DISPLAY.fill(GREY, (0, 10, 500, 200))
                         DISPLAY.fill(GREY, (0, 250, 500, 200))
@@ -140,7 +141,7 @@ def profileMenu(profile1, profile2):
                         profile1_button.addText(profileStringList1)
                         profile2_button.addText(profileStringList2)
 
-                        index -= 2
+                        index -= 2 #Increment the list index
                     except Exception as e:
                         print("Max Page reached")
    
@@ -178,7 +179,9 @@ def profileMenu(profile1, profile2):
                     "Time Played: " + str(profile2["TimePlayed"]),
                     "Level: " + str(profile2["Level"]),
                     ]
-
+                    
+                    DISPLAY.fill(CYAN)
+                    
                     DISPLAY.fill(GREY, (0, 10, 500, 200))
                     DISPLAY.fill(GREY, (0, 250, 500, 200))
 
@@ -189,10 +192,11 @@ def profileMenu(profile1, profile2):
                     profile1_button.addText(profileStringList1)
                     profile2_button.addText(profileStringList2)
 
-                    index += 2
+                    index += 2 #Increment the current index.
 
 
                 except Exception as e:
+                    #Check if there is one profile remaining.
                     try:
                         profile1 = {
                         "ProfileName": str(profiles[next_1][1]),
@@ -221,7 +225,7 @@ def profileMenu(profile1, profile2):
             pygame.display.flip()
 
 
-def songMenu():
+def songMenu(profile):
     pass
 
 def textbox():
